@@ -1,0 +1,42 @@
+﻿@model rojan1.Models.employee_salary_details
+@{
+    ViewBag.Title = "edit";
+}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        background-color: black;
+        color: white;
+    }
+
+        .btn:hover {
+            background-color: gray;
+        }
+</style>
+
+<h2>Update</h2>
+@using (Html.BeginForm("UpdateData", "empSal"))
+{
+    @Html.DropDownList("employeeList", null, "select", htmlAttributes: new { @Name = "employee_id", @class = "form-control" })
+    <input type="hidden" name="id" value="@Model.id" />
+    <label class="col-md-2">salary_paid</label>
+    <div class="col-md-4">
+        <input type="text" name="salary_paid" class="form-control" />
+    </div>
+    <label class="col-md-2">paid_date</label>
+    <div class="col-md-4">
+        <input type="text" name="paid_date" class="form-control" />
+    </div>
+    @*<label class="col-md-2">contact</label>
+    <div class="col-md-4">
+        <input type="text" name="contact" class="form-control" />
+    </div>*@
+    <br />
+    <br />
+    <button class="btn">Update</button>
+}
+

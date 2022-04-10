@@ -1,0 +1,41 @@
+﻿@model rojan1.Models.staff
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        background-color: black;
+        color: white;
+    }
+
+        .btn:hover {
+            background-color: gray;
+        }
+</style>
+
+<h2>Update</h2>
+@using (Html.BeginForm("UpdateData", "staff"))
+{
+    <input type="hidden" name="id" value="@Model.id" />
+    <label class="col-md-2">Name</label>
+    <div class="col-md-4">
+        <input type="text" name="name" class="form-control" />
+    </div>
+    <label class="col-md-2">Address</label>
+    <div class="col-md-4">
+        <input type="text" name="address" class="form-control" />
+    </div>
+    <label class="col-md-2">contact</label>
+    <div class="col-md-4">
+        <input type="text" name="contact" class="form-control" />
+    </div>
+    <br />
+    <br />
+    <button class="btn">Update</button>
+}
+

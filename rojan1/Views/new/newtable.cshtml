@@ -1,0 +1,26 @@
+﻿@model List<rojan1.Models.student>
+@{
+    ViewBag.Title = "newtable";
+    int sn = 0;
+}
+
+<h2>newtable</h2>
+<table class="table" border="1">
+    <tr>
+        <th>sid</th>
+        <th>name</th>
+
+    </tr>
+    @foreach (var newdata in Model)
+
+    {
+
+        <tr>
+            <td>@(++sn)</td>
+            <td>@newdata.name</td>
+
+        </tr>
+    }
+
+</table>
+

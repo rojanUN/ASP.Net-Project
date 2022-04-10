@@ -1,0 +1,44 @@
+﻿
+@model List<rojan1.Models.employee_salary_details>
+@{
+    ViewBag.Title = "create";
+}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        background-color: black;
+        color: white;
+    }
+
+        .btn:hover {
+            background-color: gray;
+        }
+</style>
+
+<h1>Create</h1>
+@using (Html.BeginForm("SaveData", null, FormMethod.Post))
+{
+<form action="SaveData">
+    @Html.DropDownList("employeeList", null, "select", htmlAttributes: new {@Name= "employee_id", @class="form-control"})
+    <label class="col-md-2">paid-salary</label>
+    <div class="col-md-4">
+        <input type="text" name="salary_paid" class="form-control" />
+    </div>
+    <label class="col-md-2">paid-date</label>
+    <div class="col-md-4">
+        <input type="date" name="paid_date" class="form-control" />
+    </div>
+    @*<label class="col-md-2">employee-id</label>
+    <div class="col-md-4">
+        <input type="text" name="employee_id" class="form-control" />
+    </div><br /><br />*@
+    <button class="btn">ADD</button>
+</form>
+}
+
+
+

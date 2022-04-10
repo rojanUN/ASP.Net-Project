@@ -1,0 +1,75 @@
+﻿
+@model List<rojan1.Models.employee>
+@{
+    ViewBag.Title = "rojan";
+    int sn = 0;
+}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    //the following are search options
+    <b> Search Option: </b>@Html.RadioButton("option", "name") <text>Name</text> @Html.TextBox("search") <input type = "submit"
+    name = "submit"
+    value = "Search" />
+    }
+
+    <h2>Employee</h2>
+    <form>
+        <fieldset>
+            <legend>info</legend>
+            <label class="col-md-2">Name</label>
+            <div class="col-md-4">
+                <input type="text" name="name" class="form-control" placeholder="Enter Name here" />
+            </div>
+            @*<label>Name:</label>
+                <input type="text" name="name" id="name" placeholder="enter name" /><br />*@
+            <!--<label>Address:</label>
+            <input type="text" name="address" id="address" placeholder="enter address" /><br />
+            <label>Phone:</label>
+            <input type="text" name="contact" id="contact" placeholder="enter phone num" /><br />-->
+            <label class="col-md-2">Address</label>
+            <div class="col-md-4">
+                <input type="text" name="address" class="form-control" placeholder="Enter Address here" />
+            </div>
+            <label class="col-md-2">Contact</label>
+            <div class="col-md-4">
+                <input type="text" name="contact" class="form-control" placeholder="Enter PhoneNum here" />
+            </div><br />
+            <button>search</button>
+        </fieldset>
+    </form>
+    <link rel="stylesheet" href="~/Content/index.css">
+    <h2>Table</h2>
+
+    <table class="table" border="1">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>address</th>
+            <th>contact</th>
+
+        </tr>
+        @foreach (var alldata in Model)
+
+        {
+
+            <tr>
+                <td>@alldata.name</td>
+                <td>@alldata.address</td>
+                <td>@alldata.contact</td>
+                <td><a href="@Url.Action("Edit", new {id=alldata.id})">Edit</a></td>
+                <td><a href="@Url.Action("Delete", new {id=alldata.id})">Delete</a></td>
+
+
+            </tr>
+        }
+
+    </table>
+    <button>
+        <a href="@Url.Action("create")">Add New Record</a>
+    </button>
