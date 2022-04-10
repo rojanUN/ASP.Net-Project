@@ -12,12 +12,26 @@ namespace rojan1.Controllers
     {
         rojanEntities db =  new rojanEntities();
         // GET: rojan
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            List<employee> alldata = db.employees.ToList();
-            return View(alldata);
+            //if a user choose the radio button option as name
+            if (option == "name")
+            {
+                //Index action method will return a view with a employee records based on what a user specify the value in textbox  
+                return View(db.employees.Where(x => x.name.StartsWith(search) || search == null).ToList());
+            }
+            //List<employee> alldata = db.employees.ToList();
+            //return View(alldata);
+       
+            //else if(option == "address")
+            //{
+            //  return View(db.employees.Where(x => x.address.StartsWith(search) || search == null).ToList()); 
+            //}
+            else {
+                return View( db.employees.Where(x => x.name == search || search == null).ToList());
+            }
         }
-        public ActionResult create()
+            public ActionResult create()
         {
             return View();
 
