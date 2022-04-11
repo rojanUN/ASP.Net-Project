@@ -13,7 +13,9 @@
 @using (Html.BeginForm("Index", null, FormMethod.Get))
 {
     //the following are search options
-    <b> Search Option: </b>@Html.RadioButton("option", "name") <text>Name</text> @Html.RadioButton("option", "id") <text>id</text> @Html.TextBox("search") <input type="submit" name="submit" value="Search" />
+    <b> Search Option: </b>@Html.RadioButton("option", "name") <text>Name</text>
+    @Html.RadioButton("option", "address") <text>address</text> @Html.RadioButton("option", "id") <text>id</text> @Html.TextBox("search") 
+    <input type="submit" name="submit" value="Search" />
 }
            
 

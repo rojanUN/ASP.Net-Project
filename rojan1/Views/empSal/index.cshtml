@@ -11,31 +11,15 @@
         flex-direction: column;
     }
 </style>
+
+@using (Html.BeginForm("Index", null))
+{
+   <label>from:</label> <input type="date" name="beginDate" />
+    <label>to:</label> <input type="date" name="endDate" />
+    <input type="submit" value="Search" />
+}
 <h2>Table Input</h2>
-<form>
-    <fieldset>
-        <legend>info</legend>
-        <label class="col-md-2">salary-paid</label>
-        <div class="col-md-4">
-            <input type="text" name="salary_paid" class="form-control" placeholder="Enter paid salary here" />
-        </div>
-        @*<label>Name:</label>
-        <input type="text" name="name" id="name" placeholder="enter name" /><br />*@
-        <!--<label>Address:</label>
-    <input type="text" name="address" id="address" placeholder="enter address" /><br />
-    <label>Phone:</label>
-    <input type="text" name="contact" id="contact" placeholder="enter phone num" /><br />-->
-        <label class="col-md-2">paid-date</label>
-        <div class="col-md-4">
-            <input type="date" name="paid_date" class="form-control" placeholder="Enter salary paid date here" />
-        </div>
-        <label class="col-md-2">Employee-id</label>
-        <div class="col-md-4">
-            <input type="text" name="employee_id" class="form-control" placeholder="Enter employee id here" />
-        </div><br />
-        <button>search</button>
-    </fieldset>
-</form>
+
 <link rel="stylesheet" href="~/Content/index.css">
 <h2>Table</h2>
 
@@ -48,26 +32,30 @@
 
 
     </tr>
+    <tr>
+        <td clospan="2"> Total</td>
+        <td>@(Model.Sum(x=>x.salary_paid))</td>
+    </tr>
     @foreach (var alldata in Model)
 
     {
 
-<tr>
-    <td>@alldata.employee_id</td>
-    <td>@alldata.employee.name</td>
-    <td>@alldata.salary_paid</td>
-    <td>@alldata.paid_date</td>
-    
-    <td><a href="@Url.Action("Edit", new {id=alldata.id})">Edit</a></td>
-    <td><a href="@Url.Action("deleteData", new {id=alldata.id})">Delete</a></td>
+        <tr>
+            <td>@alldata.employee_id</td>
+            <td>@alldata.employee.name</td>
+            <td>@alldata.salary_paid</td>
+            <td>@alldata.paid_date</td>
+
+            <td><a href="@Url.Action("Edit", new {id=alldata.id})">Edit</a></td>
+            <td><a href="@Url.Action("deleteData", new {id=alldata.id})">Delete</a></td>
 
 
-</tr>
-    <tr>
-        <td> Total</td>
-        <td clospan="2">@(Model.Sum(x=>x.salary_paid))</td>
-    </tr>
+        </tr>
     }
+    <tr>
+        <td clospan="2"> Total</td>
+        <td>@(Model.Sum(x=>x.salary_paid))</td>
+    </tr>
 
 </table>
 <button>

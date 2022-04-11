@@ -12,9 +12,13 @@ namespace rojan1.Controllers
         // GET: empSal
         rojanEntities db = new rojanEntities();
 
-        public ActionResult Index()
+        public ActionResult Index(DateTime? beginDate, DateTime? endDate)
         {
             List<employee_salary_details> alldata = db.employee_salary_details.ToList();
+            if (beginDate != null && endDate != null)
+            {
+                alldata = alldata.Where(x => beginDate <= x.paid_date && endDate >= x.paid_date).ToList();
+            }
             return View(alldata);
         }
         public ActionResult create()
